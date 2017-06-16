@@ -1,0 +1,74 @@
+<div class="container">
+	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<a class="navbar-brand" href="#">Latest News</a>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="/home">Home</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="jumbotron">
+		<h1 class="text-center">Saved Articles</h1>
+	</div>
+	{{#each saved}}
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="article-box">
+				<div class="row">
+					<div class="col-xs-6">
+						<a href="{{this.link}}">
+							{{this.headline}}
+						</a>
+					</div>
+					<div class="col-xs-3">
+						<button data-toggle='collapse' data-target='#notes-{{this.id}}' class="btn btn-info">
+							Article Notes
+						</button>
+					</div>
+					<div class="col-xs-3">
+						<form action="/article/removeSaved/{{this.id}}" method="POST">
+							<button type="submit" class="btn btn-danger">
+								Remove from Saved
+							</button>	
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="notes-box collapse" id="notes-{{this.id}}">
+				{{#each notes}}
+				<div class="row">
+					<div class="col-xs-8">
+						{{this.note}}
+					</div>
+					<div class="col-xs-4">
+						<form action="/removeNote/{{this.id}}">
+							<button type="submit" class="btn btn-danger">
+								X
+							</button>
+						</form>
+					</div>
+				</div>
+				{{/each}}
+				<div class="row">
+					<form action="/saveNote/{{this.id}}">
+						<div class="col-xs-12">
+							<textarea name="note-message" rows="15" cols="100">
+							</textarea>
+						</div>
+						<button type="submit" class="pull-right btn btn-success">
+							Save Note
+						</button>
+					</form>
+				</div>	
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>

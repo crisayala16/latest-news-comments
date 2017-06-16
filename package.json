@@ -1,0 +1,27 @@
+{
+  "name": "latest-news-comments",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crisayala16/latest-news-comments.git"
+  },
+  "author": "Cristopher Ayala Paz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crisayala16/latest-news-comments/issues"
+  },
+  "homepage": "https://github.com/crisayala16/latest-news-comments#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.1",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.10.6",
+    "request": "^2.81.0"
+  }
+}
