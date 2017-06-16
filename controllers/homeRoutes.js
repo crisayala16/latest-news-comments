@@ -1,10 +1,22 @@
 var express = require('express');
-var router = express.Router();
-
+var Article = require('./../models/Article.js');
 var Router = express.Router();
 
+
 Router.get('/', function(req, res){
-	res.render('index');
+	Article.find()
+	.sort({'_id': -1})
+	.exec(function(err, data){
+		if(err){
+			console.log(err);
+		}
+		else{
+			res.render('index', {
+				articles: data
+			});
+		}
+	})
+	
 });
 
 module.exports = Router;

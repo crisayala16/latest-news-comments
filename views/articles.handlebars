@@ -1,18 +1,47 @@
+<!-- Navbar -->
+	<div class="container-fluid">
+
+		<nav class="navbar navbar-default navbar-fixed-top">
+
+			<div class="container">
+
+				<!-- Navbar header -->
+				<header class="navbar-header">
+
+					<!-- Collapse button -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="glyphicon glyphicon-menu-hamburger"></span>
+					</button>
+					<!-- End of collapse button -->
+
+					<!-- Logo -->
+					<a class="navbar-brand text-header">Latest News</a>
+					<!-- End of Logo -->
+
+				</header>
+				<!-- End of Navbar Header -->
+
+				<!-- Navigation -->
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li><a href="/">Home</a></li>
+						<li><a href="/savedArticles">Saved Articles</a></li>
+						<li><a href="/scrape">Scrape New Articles</a></li>
+					</ul>
+				</div>
+				<!-- End of Navigation -->
+
+			</div>
+
+		</nav>
+
+	</div>
+	
+	<div class="container">
+
+	<!-- End of Navbar -->
 <div class="container">
-	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<a class="navbar-brand" href="#">Latest News</a>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="/">Home</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-	<div class="jumbotron">
+	<div class="jumbotron top-mar">
 		<h1 class="text-center">Saved Articles</h1>
 	</div>
 	{{#each saved}}
@@ -59,7 +88,7 @@
 				<div class="row">
 					<form action="/saveNote/{{this.id}}">
 						<div class="col-xs-12">
-							<textarea name="note-message" rows="15" cols="100">
+							<textarea name="note-message" rows="6" cols="50">
 							</textarea>
 						</div>
 						<button type="submit" class="pull-right btn btn-success">
