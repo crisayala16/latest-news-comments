@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var expressHandlebars = require('express-handlebars');
 var path = require('path');
-var Notes = require("./models/Notes.js");
+var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
 var request = require("request");
 var cheerio = require("cheerio");
@@ -44,7 +44,7 @@ db.once("open", function() {
 
 app.use(require('./controllers/homeRoutes.js'));
 app.use(require('./controllers/articleRoutes.js'));
-
+app.use(require('./controllers/NoteRoutes.js'));
 
 // Listen on port 3000
 app.listen(PORT, function() {

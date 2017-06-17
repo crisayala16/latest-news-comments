@@ -8,3 +8,21 @@
 .saved{
 	background: black;
 }
+.text-area{
+	display: block;
+	margin: 15px auto;
+}
+.notes-box{
+	background: #fff;
+	margin: 0;
+	border: 1px solid black;
+}
+.btn-save{
+	display: block;
+	margin: 10px auto 10px auto;
+}
+.note-row{
+	margin: 10px;
+	display: block;
+	border: 1px solid black;
+}

@@ -26,7 +26,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href="/">Home</a></li>
 						<li><a href="/savedArticles">Saved Articles</a></li>
-						<li><a href="/scrape">Scrape New Articles</a></li>
+						<li><a href="/scrape">Scrape Latest Articles</a></li>
 					</ul>
 				</div>
 				<!-- End of Navigation -->
@@ -55,12 +55,15 @@
 						</a>
 					</div>
 					<div class="col-xs-3">
-						<button data-toggle='collapse' data-target='#notes-{{this.id}}' class="btn btn-info">
-							Article Notes
-						</button>
+						<form action="/popNotes/{{this.id}}" method="POST">
+							<button type="submit" data-toggle='collapse' data-target='#notes-{{this.id}}' class="btn btn-info">
+								Article Notes
+							</button>
+						</form>
+						
 					</div>
 					<div class="col-xs-3">
-						<form action="/article/removeSaved/{{this.id}}" method="POST">
+						<form action="/removeSaved/{{this.id}}" method="POST">
 							<button type="submit" class="btn btn-danger">
 								Remove from Saved
 							</button>	
@@ -71,13 +74,13 @@
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="notes-box collapse" id="notes-{{this.id}}">
-				{{#each notes}}
-				<div class="row">
-					<div class="col-xs-8">
+				{{#each this.note}}
+				<div class="row note-row">
+					<div class="col-xs-10">
 						{{this.note}}
 					</div>
-					<div class="col-xs-4">
-						<form action="/removeNote/{{this.id}}">
+					<div class="col-xs-2">
+						<form action="/deleteNote/{{this.id}}" method="POST">
 							<button type="submit" class="btn btn-danger">
 								X
 							</button>
@@ -86,16 +89,16 @@
 				</div>
 				{{/each}}
 				<div class="row">
-					<form action="/saveNote/{{this.id}}">
+					<form action="/saveNote/{{this.id}}" method="POST">
 						<div class="col-xs-12">
-							<textarea name="note-message" rows="6" cols="50">
+							<textarea class="text-area" name="note" rows="6" cols="50">
 							</textarea>
 						</div>
-						<button type="submit" class="pull-right btn btn-success">
+						<button type="submit" class="btn btn-success btn-save">
 							Save Note
 						</button>
 					</form>
-				</div>	
+				</div>	 
 			</div>
 		</div>
 	</div>

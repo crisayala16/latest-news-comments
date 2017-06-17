@@ -5,7 +5,7 @@ var cheerio = require('cheerio');
 var helpers = require('handlebars-helpers');
 var comparison = helpers.comparison();
 var Article = require('./../models/Article.js');
-
+var Note = require('./../models/Note.js');
 var Router = express.Router();
 
 Router.get('/scrape', function(req, res){
@@ -49,6 +49,7 @@ Router.post('/saveArticle/:id', function(req, res){
 
 Router.get('/savedArticles', function(req, res){
 	Article.find({saved: true})
+	.populate('note')
 	.exec(function(err, doc){
 		if(err){
 			console.log(err);
@@ -59,6 +60,22 @@ Router.get('/savedArticles', function(req, res){
 			})
 		}
 	});
-})
+});
+
+Router.post('/removeSaved/:id', function(req, res){
+	var id = req.params.id;
+	Article.update(
+	{'_id': id},
+	{'saved': false},
+	function(err, doc){
+		if(err){
+			console.log(err);
+		}
+		else{
+			res.redirect('/savedArticles');
+		}
+	}
+	);
+});
 
 module.exports = Router;
