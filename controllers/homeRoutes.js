@@ -5,7 +5,6 @@ var Router = express.Router();
 
 Router.get('/', function(req, res){
 	Article.find()
-	.sort({'_id': -1})
 	.exec(function(err, data){
 		if(err){
 			console.log(err);
